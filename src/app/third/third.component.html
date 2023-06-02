@@ -1,1 +1,7 @@
-<p>third works!</p>
+<ng-container *ngIf="users$ | async as users">
+  <p *ngFor="let user of users">{{ user.age }}</p>
+</ng-container>
+
+<button (click)="addUser()">
+ Add user
+</button>

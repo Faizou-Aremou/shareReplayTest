@@ -4,22 +4,25 @@ import { Observable } from 'rxjs';
 import { User } from '../user';
 import { ApiService } from '../api.service';
 import { HttpClientModule } from '@angular/common/http';
+import { SecondComponent } from '../second/second.component';
+import { ThirdComponent } from '../third/third.component';
 
 @Component({
   selector: 'app-first',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, SecondComponent, ThirdComponent],
   templateUrl: './first.component.html',
   styleUrls: ['./first.component.css']
 })
 export class FirstComponent implements OnInit {
-  user$: Observable<User> | undefined;
+  get users$() {
+    return this.apiService.users$;
+  }
 
   constructor(private apiService: ApiService) {
 
   }
   ngOnInit(): void {
-    this.user$ = this.apiService.get((1));
   }
 
 }

@@ -1,1 +1,3 @@
-<p>second works!</p>
+<ng-container *ngIf="users$ | async as users">
+  <p *ngFor="let user of users">{{ user.age }}</p>
+</ng-container>
